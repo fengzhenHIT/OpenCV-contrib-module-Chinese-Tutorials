@@ -3,7 +3,7 @@ OpenCV 扩展模块教程
 
 - 第一章  Contrib Modules介绍与安装
     - 1.1 [Contrib Modules安装](https://github.com/fengzhenHIT/OpenCV-contrib-module-Chinese-Tutorials/blob/master/chapter%201/%E5%AE%89%E8%A3%85%E4%BB%8B%E7%BB%8D)
-    - 1.2 [Contrib Modules模块内容介绍](https://github.com/fengzhenHIT/OpenCV-contrib-module-Chinese-Tutorials/blob/master/chapter%201/Windows%E7%B3%BB%E7%BB%9F%E4%B8%AD%E5%AE%89%E8%A3%85%E6%89%A9%E5%B1%95%E6%A8%A1%E5%9D%97)
+    - 1.2 [Contrib Modules模块内容介绍](https://github.com/fengzhenHIT/OpenCV-contrib-module-Chinese-Tutorials/blob/master/chapter%201/Windows%E7%B3%BB%E7%BB%9F%E4%B8%AD%E5%AE%89%E8%A3%85%E6%89%A9%E5%B1%95%E6%A8%A1%E5%9D%97.md)
 - 第二章 ArUco标记检测(aruco模块)
     - 2.1 [ArUco标记检测](https://github.com/fengzhenHIT/OpenCV-contrib-module-Chinese-Tutorials/blob/master/chapter%202/ArUco%E6%A0%87%E8%AE%B0%E6%A3%80%E6%B5%8B.md)
     - 2.2 [ArUco标记板的检测](https://github.com/fengzhenHIT/OpenCV-contrib-module-Chinese-Tutorials/blob/master/chapter%202/ArUco%E6%A0%87%E8%AE%B0%E6%9D%BF%E7%9A%84%E6%A3%80%E6%B5%8B.md)
