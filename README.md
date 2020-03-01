@@ -7,7 +7,7 @@ OpenCV 扩展模块教程
 - 第二章 ArUco标记检测(aruco模块)
     - 2.1 [ArUco标记检测](https://github.com/fengzhenHIT/OpenCV-contrib-module-Chinese-Tutorials/blob/master/chapter%202/ArUco%E6%A0%87%E8%AE%B0%E6%A3%80%E6%B5%8B.md)
     - 2.2 [ArUco标记板的检测](https://github.com/fengzhenHIT/OpenCV-contrib-module-Chinese-Tutorials/blob/master/chapter%202/ArUco%E6%A0%87%E8%AE%B0%E6%9D%BF%E7%9A%84%E6%A3%80%E6%B5%8B.md)
-    - 2.3 [ChArUco角的检测](https://github.com/fengzhenHIT/OpenCV-contrib-module-Chinese-Tutorials/blob/master/chapter%202/ChArUco%E8%A7%92%E7%9A%84%E6%A3%80%E6%B5%8B)
+    - 2.3 [ChArUco角的检测](https://github.com/fengzhenHIT/OpenCV-contrib-module-Chinese-Tutorials/blob/master/chapter%202/ChArUco%E8%A7%92%E7%9A%84%E6%A3%80%E6%B5%8B.md)
     - 2.4 [菱形标记检测](https://github.com/fengzhenHIT/OpenCV-contrib-module-Chinese-Tutorials/blob/master/chapter%202/%E8%8F%B1%E5%BD%A2%E6%A0%87%E8%AE%B0%E6%A3%80%E6%B5%8B)
     - 2.5 [使用ArUco和ChArUco进行相机标定](https://github.com/fengzhenHIT/OpenCV-contrib-module-Chinese-Tutorials/blob/master/chapter%202/%E4%BD%BF%E7%94%A8ArUco%E5%92%8CChArUco%E8%BF%9B%E8%A1%8C%E7%9B%B8%E6%9C%BA%E6%A0%87%E5%AE%9A)
     - 2.6 [Aruco模块常见问题](https://github.com/fengzhenHIT/OpenCV-contrib-module-Chinese-Tutorials/blob/master/chapter%202/Aruco%E6%A8%A1%E5%9D%97%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98)
