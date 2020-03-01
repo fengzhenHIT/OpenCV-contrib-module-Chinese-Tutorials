@@ -14,7 +14,7 @@ OpenCV 扩展模块教程
 - 第三章 背景分割(bgsegm模块)
     - 3.1 [背景分割](https://github.com/fengzhenHIT/OpenCV-contrib-module-Chinese-Tutorials/blob/master/chapter%203/%E8%83%8C%E6%99%AF%E5%88%86%E5%89%B2.md)
 - 第四章 生物视觉 (bioinspired模块)
-    - 4.1 [视网膜视觉和真实世界的视觉](https://github.com/fengzhenHIT/OpenCV-contrib-module-Chinese-Tutorials/blob/master/chapter%204/%E8%A7%86%E7%BD%91%E8%86%9C%E8%A7%86%E8%A7%89%E5%92%8C%E7%9C%9F%E5%AE%9E%E4%B8%96%E7%95%8C%E7%9A%84%E8%A7%86%E8%A7%89)
+    - 4.1 [视网膜视觉和真实世界的视觉](https://github.com/fengzhenHIT/OpenCV-contrib-module-Chinese-Tutorials/blob/master/chapter%204/%E8%A7%86%E7%BD%91%E8%86%9C%E8%A7%86%E8%A7%89%E5%92%8C%E7%9C%9F%E5%AE%9E%E4%B8%96%E7%95%8C%E7%9A%84%E8%A7%86%E8%A7%89.md)
     - 4.2 [处理引起视错觉的图像](https://github.com/fengzhenHIT/OpenCV-contrib-module-Chinese-Tutorials/blob/master/chapter%204/%E5%A4%84%E7%90%86%E5%BC%95%E8%B5%B7%E8%A7%86%E9%94%99%E8%A7%89%E7%9A%84%E5%9B%BE%E5%83%8F)
 - 第五章 相机标定(ccalib模块)
     - 5.1 [广角相机标定](https://github.com/fengzhenHIT/OpenCV-contrib-module-Chinese-Tutorials/blob/master/chapter%205/%E5%B9%BF%E8%A7%92%E7%9B%B8%E6%9C%BA%E6%A0%87%E5%AE%9A)
