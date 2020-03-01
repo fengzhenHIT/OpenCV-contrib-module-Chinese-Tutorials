@@ -55,11 +55,10 @@ facerec_demo.exe D:/data/at.txt
 
 令X={x<sub>1</sub>,x<sub>2</sub>,…,x<sub>n</sub> }是带有观测值x<sub>i</sub>∈R<sup>d</sup>的随机向量。计算平均值μ
 
-~~μ=1/n ∑_(i=1)^n▒x_i~~  
-
+<p align="center"><a href="https://www.codecogs.com/eqnedit.php?latex=\mu&space;=&space;\frac{1}{n}\sum\limits_{i&space;=&space;1}^n&space;{{x_i}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\mu&space;=&space;\frac{1}{n}\sum\limits_{i&space;=&space;1}^n&space;{{x_i}}" title="\mu = \frac{1}{n}\sum\limits_{i = 1}^n {{x_i}}" /></a></p>
 计算协方差矩阵S
 
-~~S=1/n ∑_(i=1)^n▒〖(x_i-μ)〖(x_i-μ)〗^T 〗~~ 
+<p align="center"><a href="https://www.codecogs.com/eqnedit.php?latex=S&space;=&space;\frac{1}{n}\sum\limits_{i&space;=&space;1}^n&space;{\left(&space;{{x_i}&space;-&space;\mu&space;}&space;\right){{\left(&space;{{x_i}&space;-&space;\mu&space;}&space;\right)}^T}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?S&space;=&space;\frac{1}{n}\sum\limits_{i&space;=&space;1}^n&space;{\left(&space;{{x_i}&space;-&space;\mu&space;}&space;\right){{\left(&space;{{x_i}&space;-&space;\mu&space;}&space;\right)}^T}}" title="S = \frac{1}{n}\sum\limits_{i = 1}^n {\left( {{x_i} - \mu } \right){{\left( {{x_i} - \mu } \right)}^T}}" /></a></p>
 
 计算S的特征值λ<sub>i</sub>和特征向量v<sub>i</sub>
 <center>Sv<sub>i</sub>=λ<sub>i </sub>v<sub>i</sub>，i=1,2,…,n</center>
@@ -330,38 +329,43 @@ for(int num_components = 10; num_components < 300; num_components+=15) {
 
 散射矩阵S<sub>B</sub>和S_ {W}的计算公式为：
 
-~~S_B=∑_(I=1)^C▒〖N_i (μ_i-μ)(μ_i-μ)^T 〗~~ 
+<p align="center"><a href="https://www.codecogs.com/eqnedit.php?latex={S_B}&space;=&space;\sum\limits_{i&space;=&space;1}^c&space;{{N_i}\left(&space;{{\mu&space;_i}&space;-&space;u}&space;\right){{\left(&space;{{\mu&space;_i}&space;-&space;u}&space;\right)}^T}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?{S_B}&space;=&space;\sum\limits_{i&space;=&space;1}^c&space;{{N_i}\left(&space;{{\mu&space;_i}&space;-&space;u}&space;\right){{\left(&space;{{\mu&space;_i}&space;-&space;u}&space;\right)}^T}}" title="{S_B} = \sum\limits_{i = 1}^c {{N_i}\left( {{\mu _i} - u} \right){{\left( {{\mu _i} - u} \right)}^T}}" /></a></p>
 
-~~S_W=∑_(I=1)^C▒∑_(x_j∈X_i)▒〖(x_j-μ_i)(x_j-μ_i)〗^T~~  
+
+
+<p align="center"><a href="https://www.codecogs.com/eqnedit.php?latex={S_W}&space;=&space;\sum\limits_{i&space;=&space;1}^c&space;{\sum\limits_{{x_j}&space;\in&space;{X_i}}&space;{\left(&space;{{x_j}&space;-&space;{u_i}}&space;\right){{\left(&space;{{x_j}&space;-&space;{u_i}}&space;\right)}^T}}&space;}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?{S_W}&space;=&space;\sum\limits_{i&space;=&space;1}^c&space;{\sum\limits_{{x_j}&space;\in&space;{X_i}}&space;{\left(&space;{{x_j}&space;-&space;{u_i}}&space;\right){{\left(&space;{{x_j}&space;-&space;{u_i}}&space;\right)}^T}}&space;}" title="{S_W} = \sum\limits_{i = 1}^c {\sum\limits_{{x_j} \in {X_i}} {\left( {{x_j} - {u_i}} \right){{\left( {{x_j} - {u_i}} \right)}^T}} }" /></a></p>
 
 其中，μ是总平均值：
 
-~~μ=1/N ∑_(i=1)^n▒x_i~~  
+<p align="center"><a href="https://www.codecogs.com/eqnedit.php?latex=\mu&space;=&space;\frac{1}{N}\sum\limits_{i&space;=&space;1}^N&space;{{x_i}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?\mu&space;=&space;\frac{1}{N}\sum\limits_{i&space;=&space;1}^N&space;{{x_i}}" title="\mu = \frac{1}{N}\sum\limits_{i = 1}^N {{x_i}}" /></a></p>
 
 μ<sub>i</sub>是类i∈{1，…，c}的平均值：
 
-~~μ_i=1/|X_i |  ∑_(x_j∈X_i)^n▒x_j~~  
+<p align="center"><a href="https://www.codecogs.com/eqnedit.php?latex={\mu&space;_i}&space;=&space;\frac{1}{{\left|&space;{{X_i}}&space;\right|}}\sum\limits_{{x_j}&space;\in&space;{X_i}}^N&space;{{x_j}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?{\mu&space;_i}&space;=&space;\frac{1}{{\left|&space;{{X_i}}&space;\right|}}\sum\limits_{{x_j}&space;\in&space;{X_i}}^N&space;{{x_j}}" title="{\mu _i} = \frac{1}{{\left| {{X_i}} \right|}}\sum\limits_{{x_j} \in {X_i}}^N {{x_j}}" /></a></p>
 
 Fisher的经典算法现在寻找投影W，该投影W使类可分离性标准最大化：
 
-~~W_opt=〖argmax〗_W  |W^T S_B W|/|W^T S_W W|~~  
+<p align="center"><a href="https://www.codecogs.com/eqnedit.php?latex={W_{opt}}&space;=&space;\arg&space;{\max&space;_W}\frac{{\left|&space;{{W^T}{S_B}W}&space;\right|}}{{\left|&space;{{W^T}{S_W}W}&space;\right|}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?{W_{opt}}&space;=&space;\arg&space;{\max&space;_W}\frac{{\left|&space;{{W^T}{S_B}W}&space;\right|}}{{\left|&space;{{W^T}{S_W}W}&space;\right|}}" title="{W_{opt}} = \arg {\max _W}\frac{{\left| {{W^T}{S_B}W} \right|}}{{\left| {{W^T}{S_W}W} \right|}}" /></a></p>
 
 之后，通过解决一般特征值问题，给出了该优化问题的解决方案：
 
-<center>S<sub>B</sub> v<sub>i</sub>=λ<sub>i</sub> S<sub>w </sub>v<sub>i</sub></center>
+<p align="center"><a href="https://www.codecogs.com/eqnedit.php?latex={S_B}{\upsilon&space;_i}&space;=&space;{\lambda&space;_i}{S_\omega&space;}{\upsilon&space;_i}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?{S_B}{\upsilon&space;_i}&space;=&space;{\lambda&space;_i}{S_\omega&space;}{\upsilon&space;_i}" title="{S_B}{\upsilon _i} = {\lambda _i}{S_\omega }{\upsilon _i}" /></a></p>
 
-~~S_W^(-1) S_B v_i=λ_i v_i~~ 
+<p align="center"><a href="https://www.codecogs.com/eqnedit.php?latex=S_W^{&space;-&space;1}{S_B}{\upsilon&space;_i}&space;=&space;{\lambda&space;_i}{\upsilon&space;_i}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?S_W^{&space;-&space;1}{S_B}{\upsilon&space;_i}&space;=&space;{\lambda&space;_i}{\upsilon&space;_i}" title="S_W^{ - 1}{S_B}{\upsilon _i} = {\lambda _i}{\upsilon _i}" /></a></p>
 
 还有一个问题要解决：SW的等级最多为（N-c），具有N个样本和c个类。 在模式识别问题中，样本数N几乎总是比输入数据的维数（像素数）小，因此散射矩阵SW变得奇异（请参阅[173]）。这是通过对数据执行主成分分析并将样本投影到（NC）维空间来解决的。 然后对简化的数据执行线性判别分析，因为SW不再是奇异的。
 
 然后可以将优化问题重写为：
-<center>W<sub>pca</sub>=argmax<sub>W </sub>|W<sup>T</sup> S<sub>T</sub> W|</center>
+<p align="center"><a href="https://www.codecogs.com/eqnedit.php?latex={W_{pac}}&space;=&space;\arg&space;{\max&space;_W}\left|&space;{{W^T}{S_T}W}&space;\right|" target="_blank"><img src="https://latex.codecogs.com/gif.latex?{W_{pac}}&space;=&space;\arg&space;{\max&space;_W}\left|&space;{{W^T}{S_T}W}&space;\right|" title="{W_{pac}} = \arg {\max _W}\left| {{W^T}{S_T}W} \right|" /></a></p>
 
-~~W_fld=〖argmax〗_W  |W^T W_pca^T S_B W_pca W|/|W^T W_pca^T S_W W_pca W|~~  
+
+<p align="center"><a href="https://www.codecogs.com/eqnedit.php?latex={W_{fld}}&space;=&space;\arg&space;{\max&space;_W}\frac{{\left|&space;{{W^T}W_{pca}^T{S_B}{W_{pca}}W}&space;\right|}}{{\left|&space;{{W^T}W_{pca}^T{S_W}{W_{pca}}W}&space;\right|}}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?{W_{fld}}&space;=&space;\arg&space;{\max&space;_W}\frac{{\left|&space;{{W^T}W_{pca}^T{S_B}{W_{pca}}W}&space;\right|}}{{\left|&space;{{W^T}W_{pca}^T{S_W}{W_{pca}}W}&space;\right|}}" title="{W_{fld}} = \arg {\max _W}\frac{{\left| {{W^T}W_{pca}^T{S_B}{W_{pca}}W} \right|}}{{\left| {{W^T}W_{pca}^T{S_W}{W_{pca}}W} \right|}}" /></a></p>
+
 
 之后，将样本投影到（c-1）维空间的变换矩阵W由下式给出
 
-~~W=W_fld^T W_pca^T~~ 
+<p align="center"><a href="https://www.codecogs.com/eqnedit.php?latex=W&space;=&space;W_{fld}^TW_{pca}^T" target="_blank"><img src="https://latex.codecogs.com/gif.latex?W&space;=&space;W_{fld}^TW_{pca}^T" title="W = W_{fld}^TW_{pca}^T" /></p>
+
 
 ## 10.1.7	Fisherfaces示例
 
