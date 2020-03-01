@@ -3,12 +3,12 @@
 
 <p align="center"><strong>本教程由小白学视觉团队 译</strong></p>
 &nbsp;
-<p align="center"><img src="https://img-blog.csdnimg.cn/20200301190623909.png"></img></p>
+<p align="center"><img src="https://img-blog.csdnimg.cn/20200301190623909.png" height="200"></img></p>
 <p align="center"><strong>关注微信公众号“小白学视觉”获取更多计算机视觉学习资料</strong></p>
 
 小白学视觉是2018年5月由哈尔滨工业大学博士生创办的技术类公众号，主要面向对计算机视觉、图像处理感兴趣的爱好者，分享计算机视觉学习资源、学习过程总结、前沿技术等内容，搭建计算机视觉、图像处理学习和交流的平台。
 
-小白学视觉分享内容包括：  **OpenCV入门  SLAM学习  优质书籍介绍  优质课程分享   编程技巧  论文解读  前沿方向介绍  招聘内推  招聘信息** 
+小白学视觉分享内容包括：  **OpenCV入门 &emsp; SLAM学习 &emsp; 优质书籍介绍 &emsp; 优质课程分享 &emsp; 编程技巧 &emsp; 论文解读 &emsp; 前沿方向介绍 &emsp; 招聘内推 &emsp; 招聘信息** 
 
 
 - [引言](#引言)
