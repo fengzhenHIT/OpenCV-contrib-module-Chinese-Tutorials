@@ -1,6 +1,7 @@
 # OpenCV-contrib-module-Chinese-Tutorials
 # （OpenCV contrib扩展模块中文教程）
 
+&nbsp;
 <p align="center"><strong>本教程由小白学视觉团队 译</strong></p>
 &nbsp;
 <p align="center"><img src="https://img-blog.csdnimg.cn/20200301190623909.png" height="200"></img></p>
