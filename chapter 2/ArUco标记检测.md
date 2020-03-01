@@ -28,11 +28,9 @@ aruco模块中具有一些预定义的词典，这些词典具有不同的字典
 在检测到标记之前，需要先打印标记，然后将其放置在环境中。可以使用drawMarker()函数生成标记图像。例如可以通过代码清单2-1中的代码生成标记图像。
 ```cpp
 代码清单2-1：生成标记图像
-
-1.	cv::Mat markerImage;
-2.	cv::Ptr<cv::aruco::Dictionary> dictionary = 
-3.	               cv::aruco::getPredefinedDictionary(cv::aruco::DICT_6X6_250);
-4.	cv::aruco::drawMarker(dictionary, 23, 200, markerImage, 1)
+cv::Mat markerImage;
+cv::Ptr<cv::aruco::Dictionary> dictionary = cv::aruco::getPredefinedDictionary(cv::aruco::DICT_6X6_250);
+cv::aruco::drawMarker(dictionary, 23, 200, markerImage, 1)
 
 ```
 在生成标记时，首先通过选择aruco模块中的预定义词典来创建Dictionary对象。代码清单2-1中创建的是一个具有250个标记和标记尺寸6×6位（DICT_6X6_250）字典。
@@ -80,15 +78,13 @@ aruco模块样例中提供了create_marker.cpp文件用于生成指定的ArRco�
 在aruco模块中，detectMarkers()函数实现标志的检测。此函数是该模块中是最重要的函数，其他函数都是基于detectMarkers()函数的返回值进行再处理。代码清单2-3给出了检测标记的示例程序。
 ```cpp
 代码清单2-3：检测标记
-1.	cv::Mat inputImage;
-2.	...
-3.	std::vector<int> markerIds;
-4.	std::vector<std::vector<cv::Point2f>> markerCorners, rejectedCandidates;
-5.	cv::Ptr<cv::aruco::DetectorParameters> parameters;
-6.	cv::Ptr<cv::aruco::Dictionary> dictionary = 
-7.	              cv::aruco::getPredefinedDictionary(cv::aruco::DICT_6X6_250);
-8.	cv::aruco::detectMarkers(inputImage, dictionary, markerCorners, 
-9.	                                   markerIds, parameters, rejectedCandidates);
+cv::Mat inputImage;
+...
+std::vector<int> markerIds;
+std::vector<std::vector<cv::Point2f>> markerCorners, rejectedCandidates;
+cv::Ptr<cv::aruco::DetectorParameters> parameters;
+cv::Ptr<cv::aruco::Dictionary> dictionary = cv::aruco::getPredefinedDictionary(cv::aruco::DICT_6X6_250);
+cv::aruco::detectMarkers(inputImage, dictionary, markerCorners, markerIds, parameters, rejectedCandidates);
 ```			
 detectMarkers()函数具有六个参数，每个参数的含义为：
 1.	第一个参数是需要检测标记的图像。
@@ -101,11 +97,11 @@ detectMarkers()函数具有六个参数，每个参数的含义为：
 检测并识别标记之后之后，可以利用aruco模块提供的drawDetectedMarkers()函数在输入图像中绘制检测到的标记，该函数的使用方法在代码清单2-4中给出。
 ```cpp
 代码清单2-4：绘制标记
-16. cv::Mat outputImage
-17.	cv::aruco::drawDetectedMarkers(image, markerCorners, markerIds);
+cv::Mat outputImage
+cv::aruco::drawDetectedMarkers(image, markerCorners, markerIds);
 ```
 drawDetectedMarkers()函数具有三个参数，每个参数的含义如下：
-18. .	第一个参数是将绘制标记的输入/输出图像（通常是与检测到标记的图像相同）
+18. 第一个参数是将绘制标记的输入/输出图像（通常是与检测到标记的图像相同）
 19.	第二个参数是检测到的标记的角点列表
 20.	第三个参数是检测到的每个标记的id
 
@@ -121,31 +117,30 @@ drawDetectedMarkers()函数具有三个参数，每个参数的含义如下：
 
 ```cpp
 代码清单2-5：相机检测标记
-21.	cv::VideoCapture inputVideo;
-22.	inputVideo.open(0);
-23.	cv::Ptr<cv::aruco::Dictionary> dictionary =
-24.	              cv::aruco::getPredefinedDictionary(cv::aruco::DICT_6X6_250);
-25.	while (inputVideo.grab()) {
-26.	    cv::Mat image, imageCopy;
-27.	    inputVideo.retrieve(image);
-28.	    image.copyTo(imageCopy);
-29.	    std::vector<int> ids;
-30.	    std::vector<std::vector<cv::Point2f> > corners;
-31.	    cv::aruco::detectMarkers(image, dictionary, corners, ids);
-32.	    // if at least one marker detected
-33.	    if (ids.size() > 0)
-34.	        cv::aruco::drawDetectedMarkers(imageCopy, corners, ids);
-35.	    cv::imshow("out", imageCopy);
-36.	    char key = (char) cv::waitKey(waitTime);
-37.	    if (key == 27)
-38.	        break;
-39.	}
+cv::VideoCapture inputVideo;
+inputVideo.open(0);
+cv::Ptr<cv::aruco::Dictionary> dictionary = cv::aruco::getPredefinedDictionary(cv::aruco::DICT_6X6_250);
+while (inputVideo.grab()) {
+    cv::Mat image, imageCopy;
+    inputVideo.retrieve(image);
+    image.copyTo(imageCopy);
+    std::vector<int> ids;
+    std::vector<std::vector<cv::Point2f> > corners;
+    cv::aruco::detectMarkers(image, dictionary, corners, ids);
+    // if at least one marker detected
+    if (ids.size() > 0)
+        cv::aruco::drawDetectedMarkers(imageCopy, corners, ids);
+    cv::imshow("out", imageCopy);
+    char key = (char) cv::waitKey(waitTime);
+    if (key == 27)
+        break;
+}
 ```
  完整的示例程序在aruco模块文件夹内的detect_markers.cpp中。可以通过代码清单2-6中的命令执行该项目。
 
 ```cpp
 代码清单2-6：detect_markers.cpp文件需要的参数
-40.	-c="_path_/calib.txt" -d=10
+-c="_path_/calib.txt" -d=10
 ```
 ## 2.1.4 姿态估计
 检测到标记后，我们需要从标记中获取相机姿态。要执行相机姿态估计，我们需要了解相机的标定参数。这是相机内参矩阵和畸变系数。使用OpenCV基础库中标定函数即可，这里不详细介绍如何对相机进行标定。我们默认读者已经完成了相机的标定。
@@ -156,11 +151,10 @@ drawDetectedMarkers()函数具有三个参数，每个参数的含义如下：
 
 ```cpp
 代码清单2-7：估计姿态
-1.	 cv::Mat cameraMatrix, distCoeffs;
+cv::Mat cameraMatrix, distCoeffs;
 2.	...
-3.	std::vector<cv::Vec3d> rvecs, tvecs;
-4.	cv::aruco::estimatePoseSingleMarkers(corners, 0.05, cameraMatrix, 
-5.	                                                       distCoeffs, rvecs, tvecs);
+std::vector<cv::Vec3d> rvecs, tvecs;
+cv::aruco::estimatePoseSingleMarkers(corners, 0.05, cameraMatrix, distCoeffs, rvecs, tvecs);
 ```
 cv::aruco::estimatePoseSingleMarkers()函数有六个参数，每个参数的含义如下：
 1. 第一个参数是detectMarkers()函数返回的标记角点的向量。
@@ -172,7 +166,7 @@ cv::aruco::estimatePoseSingleMarkers()函数有六个参数，每个参数的含
 
 ```cpp
 代码清单2-8：绘制坐标轴
-10.	cv::aruco::drawAxis(image, cameraMatrix, distCoeffs, rvec, tvec, 0.1);
+cv::aruco::drawAxis(image, cameraMatrix, distCoeffs, rvec, tvec, 0.1);
 ```
 cv::aruco::drawAxis()函数具有六个参数，每个参数的含义如下
 1.	第一个参数是绘制坐标轴轴的输入/输出图像（通常是与检测到标记的图像相同）。
@@ -193,37 +187,33 @@ cv::aruco::drawAxis()函数具有六个参数，每个参数的含义如下
 
 ```cpp
 代码清单2-9：实时姿态估计
-1.	cv::VideoCapture inputVideo;
-2.	inputVideo.open(0);
-3.	cv::Mat cameraMatrix, distCoeffs;
-4.	// camera parameters are read from somewhere
-5.	readCameraParameters(cameraMatrix, distCoeffs);
-6.	cv::Ptr<cv::aruco::Dictionary> dictionary = 
-7.	               cv::aruco::getPredefinedDictionary(cv::aruco::DICT_6X6_250);
-8.	while (inputVideo.grab()) {
-9.	    cv::Mat image, imageCopy;
-10.	    inputVideo.retrieve(image);
-11.	    image.copyTo(imageCopy);
-12.	    std::vector<int> ids;
-13.	    std::vector<std::vector<cv::Point2f>> corners;
-14.	    cv::aruco::detectMarkers(image, dictionary, corners, ids);
-15.	    // if at least one marker detected
-16.	    if (ids.size() > 0) {
-17.	        cv::aruco::drawDetectedMarkers(imageCopy, corners, ids);
-18.	        std::vector<cv::Vec3d> rvecs, tvecs;
-19.	        cv::aruco::estimatePoseSingleMarkers(corners, 0.05, cameraMatrix, 
-20.	                                                       distCoeffs, rvecs, tvecs);
-21.	        // draw axis for each marker
-22.	        for(int i=0; i<ids.size(); i++)
-23.	            cv::aruco::drawAxis(imageCopy, cameraMatrix, distCoeffs, 
-24.	                                                         rvecs[i], tvecs[i], 0.1);
-25.	    }
-26.	    cv::imshow("out", imageCopy);
-27.	    char key = (char) cv::waitKey(waitTime);
- if (key == 27)
-29.	        break;
-30.	}
-
+cv::VideoCapture inputVideo;
+inputVideo.open(0);
+cv::Mat cameraMatrix, distCoeffs;
+// camera parameters are read from somewhere
+readCameraParameters(cameraMatrix, distCoeffs);
+cv::Ptr<cv::aruco::Dictionary> dictionary = cv::aruco::getPredefinedDictionary(cv::aruco::DICT_6X6_250);
+while (inputVideo.grab()) {
+	   cv::Mat image, imageCopy;
+    inputVideo.retrieve(image);
+    image.copyTo(imageCopy);
+    std::vector<int> ids;
+    std::vector<std::vector<cv::Point2f>> corners;
+    cv::aruco::detectMarkers(image, dictionary, corners, ids);
+    // if at least one marker detected
+    if (ids.size() > 0) {
+        cv::aruco::drawDetectedMarkers(imageCopy, corners, ids);
+        std::vector<cv::Vec3d> rvecs, tvecs;
+        cv::aruco::estimatePoseSingleMarkers(corners, 0.05, cameraMatrix, distCoeffs, rvecs, tvecs);
+        // draw axis for each marker
+        for(int i=0; i<ids.size(); i++)
+            cv::aruco::drawAxis(imageCopy, cameraMatrix, distCoeffs, rvecs[i], tvecs[i], 0.1);
+    }
+    cv::imshow("out", imageCopy);
+    char key = (char) cv::waitKey(waitTime);
+    if (key == 27)
+        break;
+}
  ```
 <p align="center">
 <img src="https://img-blog.csdnimg.cn/20200223114941709.jpg" height="350">
@@ -233,7 +223,7 @@ cv::aruco::drawAxis()函数具有六个参数，每个参数的含义如下
 完整的代码程序在aruco模块文件夹内的detect_markers.cpp中。可以通过代码清单2-10中的命令执行该项目。
 ```cpp
 代码清单2-10：调用实时姿态的参数
-1.	-c="_path_/calib.txt" -d=10
+-c="_path_/calib.txt" -d=10
 ```
 ## 2.1.5 选择字典
 aruco模块了提供Dictionary类来表示标记字典。除了标记的尺寸和字典中标记的数量之外，标记间的距离也是字典的重要参数。标记间的距离是指字典中所有标记之间的最小距离，它决定了词典的错误检测能力和纠错能力。
@@ -244,7 +234,7 @@ aruco模块了提供Dictionary类来表示标记字典。除了标记的尺寸�
 使用预定义字典是选择字典最简单的方法。aruco模块内提供了一组预定义的字典，其中包含多种标记尺寸和标记数量，可以通过代码清单2-11中的代码选择字典的大小和标记的尺寸。
 ```cpp
 代码清单2-11：选择预定义字典
-2.	cv::Ptr<cv::aruco::Dictionary>dictionary=cv::aruco::getPredefinedDictionary(cv::aruco::DICT_6X6_250);
+cv::Ptr<cv::aruco::Dictionary>dictionary=cv::aruco::getPredefinedDictionary(cv::aruco::DICT_6X6_250);
 ```
 代码清单2-11中的代码表示创建一个字典大小为250，标记尺寸为6×6的字典。使用预定于的字典，标记尺寸可以在4×4到7×7之间自由选择。同样，字典大小可以在50、100、250和1000中自由选择。在实际需求中，我们需要选择合适的字典。例如在同时满足需求的前提下，DICT_6X6_250的字典要好于DICT_6X6_1000，因为字典越小，标记间的距离就越大。
 ### 2. 	自动选择字典
@@ -252,8 +242,7 @@ aruco模块了提供Dictionary类来表示标记字典。除了标记的尺寸�
 有时我们并不知道应该选择多大的字典，因此可以将选择字典的任务交给程序，由程序自动选择一个合适的字典，来保证字符间的距离最大。可以用代码清单2-12中的命令实现自动选择字典。
 ```cpp
 代码清单2-12：自动选择字典
-4.	cv::Ptr<cv::aruco::Dictionary> dictionary = 
-5.	                                    cv::aruco::generateCustomDictionary(36, 5);
+cv::Ptr<cv::aruco::Dictionary> dictionary = cv::aruco::generateCustomDictionary(36, 5);
 ```
 代码清单2-12中的命令将会生成一个由36个尺寸为5×5的标记组成的自定义字典。根据参数的不同，这个过程可能会花费几秒钟的时间(对于较大的字典和较高的标记尺寸，这个过程会慢一些)。
 
@@ -263,12 +252,13 @@ aruco模块了提供Dictionary类来表示标记字典。除了标记的尺寸�
 
 ```cpp
 代码清单2-13：重定义Dictionary类
-7.	class Dictionary {
-8.	    public:
-9.	    Mat bytesList;
-10.	    int markerSize;
-11.	    int maxCorrectionBits;    ...
-12.	}
+class Dictionary {
+    public:
+    Mat bytesList;
+    int markerSize;
+    int maxCorrectionBits;    
+    ...
+}
 ```
 代码清2-13中每个参数的含义如下：字典参数为：
 -	bytesList是包含关于标记代码的所有信息的数组。
@@ -281,23 +271,22 @@ aruco模块了提供Dictionary类来表示标记字典。除了标记的尺寸�
 bytesList中的每一行表示一个字典标记。但是，这个标记不是以二进制形式存储的，而是以一种特殊的格式存储的，以简化它们的检测。Dictionary类中提供了Dictionary::getByteListFromBits()函数将标记转换为这种形式，具体如代码清单2-14中所示。
 ```cpp
 代码清单2-14：自定义字典示例
-1.	cv::aruco::Dictionary dictionary;
-2.	// markers of 6x6 bits
-3.	dictionary.markerSize = 6;
-4.	// maximum number of bit corrections
-5.	dictionary.maxCorrectionBits = 3;
-6.	// lets create a dictionary of 100 markers
-7.	for(int i=0; i<100; i++)
-8.	{
-9.	    // assume generateMarkerBits() generate a new marker in binary 
-10.	    //format, so that markerBits is a 6x6 matrix of CV_8UC1 type,
-11.	    // only containing 0s and 1s
-12.	    cv::Mat markerBits = generateMarkerBits();
-13.	    cv::Mat markerCompressed = 
-14.	                     cv::aruco::Dictionary::getByteListFromBits(markerBits);
-15.	    // add the marker as a new row
-16.	    dictionary.bytesList.push_back(markerCompressed);
-17.	}
+cv::aruco::Dictionary dictionary;
+// markers of 6x6 bits
+dictionary.markerSize = 6;
+// maximum number of bit corrections
+dictionary.maxCorrectionBits = 3;
+// lets create a dictionary of 100 markers
+for(int i=0; i<100; i++)
+{
+    // assume generateMarkerBits() generate a new marker in binary 
+    //format, so that markerBits is a 6x6 matrix of CV_8UC1 type,
+    // only containing 0s and 1s
+    cv::Mat markerBits = generateMarkerBits();
+    cv::Mat markerCompressed = cv::aruco::Dictionary::getByteListFromBits(markerBits);
+    // add the marker as a new row
+    dictionary.bytesList.push_back(markerCompressed);
+}
 ```
 
 ## 2.1.6参数检测器
@@ -314,37 +303,47 @@ bytesList中的每一行表示一个字典标记。但是，这个标记不是�
  <img src="https://img-blog.csdnimg.cn/20200223120037423.jpg" height="350">
 </p>
 adaptivewellwinsizemin和adaptivewellwinsizemax参数表示为自适应阈值选择阈值窗口大小(以像素为单位)的区间，adaptiveThreshWinSizeStep表示自适应窗口每次改变的大小。例如，默认值adaptivewellwinsizemin=3、adaptivewellwinsizemax=23以及adaptiveThreshWinSizeStep=10。默认值表示阈值窗口依次为3×3、13×13和23×23。
+
 此外，标记的尺寸也也对图像阈值处理产生影响，关于阈值尺寸的相关参数为：
 
--  double  minMarkerPerimeterRate
+- double  minMarkerPerimeterRate
 -	double  maxMarkerPerimeterRate
 
 这些参数决定了标记点的最小和最大尺寸，具体来说就是标记点的最大和最小周长。这两个参数的单位不是像素值，而是相对于输入图像的最大尺寸的比例。例如，大小为640×480，相对标记最小周长为0.05的图像，其最小标记周长为640×0.05 = 32像素，因为640是图像的最大尺寸。
+
 如果minMarkerPerimeterRate太小，则会大大降低检测性能，因为在未来阶段需要考虑更多的轮廓。对于maxMarkerPerimeterRate参数，这种影响不是很明显，因为通常小轮廓比大轮廓要多得多。如果minMarkerPerimeterRate值为0和maxMarkerPerimeterRate值为4(或更大)则等效于考虑图像中的所有轮廓，但是出于性能原因不建议这样做。
+
 有时标记在图像中会显示成多边形，可以用多边形率来表示形变的程度：
+
 -	double  polygonalApproxAccuracyRat
 
 这个值决定了多边形近似可以产生的最大误差。此参数是相对于候选对象周长长度的比例。例如，如果候选对象的周长为100像素，且polygonalApproxAccuracyRate的值为0.04，则最大误差为100x0.04=5.4像素。在大多数情况下，使用该参数的默认值即可正常工作，但是对于高失真的图像，可能需要更高的数值。该参数的默认值为0.05。
 加下来详细介绍多个标记之间的距离参数：
+
 -	double  minCornerDistanceRate
 
 同一标记上任意对角之间的最小距离。它是相对于界标周长表示的。像素的最小距离是周长* minCornerDistanceRate。该参数的默认值为0.05。
+
 -	double  minMarkerDistanceRate
 
 两个不同的标记之间的最小距离。它是相对于两个标记的最小标记周长来表示的。如果两个候选标记太接近，较小的那个就会被忽略。该参数的默认值为0.05。
+
 -	int  minDistanceToBorder
 
 任何标记角到图像边界的最小距离(以像素为单位)。该参数的默认值为3。
+
 2.	分析标志图像的位信息
 
 在候选标志检测完成后需要对每个候选标志进行数位分析，以确定它们是否是ArUco标记。“位”就是组成标志的最小单元，每个位表示一位二进制，例如一个6×6的标志位数就是36位。
 
 在分析标志中二进制代码之前，需要提取二进制位。为了能够精准的提取二进制信息，首先需要消除了视角形变，之后使用Otsu算法对去除形变的图像进行阈值处理，以分离黑白像素。图2-10就是去除形变和二值化后的结果。
+
 <p align="center">
  <img src="https://img-blog.csdnimg.cn/20200223120719951.jpg" height="350">
 </p>
 
 之后将图像划分到一个网格中，网格的单元格数目与标记中的位数目相同。在每个单元格上，计算黑白像素的数量来决定最终单元格的的颜色，从而确定该位表示的是0还是1。图2-11是划分单元格结果。
+
 <p align="center">
  <img src="https://img-blog.csdnimg.cn/202002231208441.jpg" height="350">
 </p>
