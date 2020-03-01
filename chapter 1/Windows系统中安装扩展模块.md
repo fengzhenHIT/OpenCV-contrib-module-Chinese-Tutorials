@@ -46,7 +46,7 @@
 
 ```cpp
 代码清单1-1 编译OpenCV命令
-1.	cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local OPENCV_EXTRA_MODULES_PATH=../opencv_contrib/modules ..
+cmake -D CMAKE_BUILD_TYPE=RELEASE -D CMAKE_INSTALL_PREFIX=/usr/local OPENCV_EXTRA_MODULES_PATH=../opencv_contrib/modules ..
 ```
 
 ***注意
