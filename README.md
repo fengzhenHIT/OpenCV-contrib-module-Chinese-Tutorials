@@ -28,7 +28,7 @@ OpenCV 扩展模块教程
 - 第八章 CNNs目标检测(dnn_objdetect模块)
     - 8.1 [使用CNNs进行目标检测](https://github.com/fengzhenHIT/OpenCV-contrib-module-Chinese-Tutorials/blob/master/chapter%208/%E4%BD%BF%E7%94%A8CNNs%E8%BF%9B%E8%A1%8C%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B.md)
 - 第九章 图像超分(dnn_superresm模块)
-    - 9.1 [放大图像：单输出](https://github.com/fengzhenHIT/OpenCV-contrib-module-Chinese-Tutorials/blob/master/chapter%209/%E6%94%BE%E5%A4%A7%E5%9B%BE%E5%83%8F%EF%BC%9A%E5%8D%95%E8%BE%93.md)
+    - 9.1 [放大图像：单输出](https://github.com/fengzhenHIT/OpenCV-contrib-module-Chinese-Tutorials/blob/master/chapter%209/%E6%94%BE%E5%A4%A7%E5%9B%BE%E5%83%8F%EF%BC%9A%E5%8D%95%E8%BE%93%E5%87%BA.md)
     - 9.2 [放大图像：多输出](https://github.com/fengzhenHIT/OpenCV-contrib-module-Chinese-Tutorials/blob/master/chapter%209/%E6%94%BE%E5%A4%A7%E5%9B%BE%E5%83%8F%EF%BC%9A%E5%8D%95%E8%BE%93%E5%87%BA.md)
     - 9.3 [放大视频](https://github.com/fengzhenHIT/OpenCV-contrib-module-Chinese-Tutorials/blob/master/chapter%209/%E6%94%BE%E5%A4%A7%E8%A7%86%E9%A2%91.md)
     - 9.4 [超分辨率基准测试](https://github.com/fengzhenHIT/OpenCV-contrib-module-Chinese-Tutorials/blob/master/chapter%209/%E8%B6%85%E5%88%86%E8%BE%A8%E7%8E%87%E5%9F%BA%E5%87%86%E6%B5%8B%E8%AF%95.md)
