@@ -9,9 +9,9 @@ aruco模块基于ArUco库，该库是由RafaelMuñoz和Sergio Garrido开发的�
 ## 2.1.1 标记和字典	
 ArUco标记是由宽黑色边框和确定其标识符（id）的内部二进制矩阵组成的正方形标记。黑色边框有助于其在图像中的快速检测，内部二进制编码用于识别标记和提供错误检测和纠正。标记尺寸的大小决定内部矩阵的大小，例如尺寸为4x4的标记由16位组成二进制组成。在图2-1中给出了一些ArUco标记的示例。
 
- <center>
- <img src="https://img-blog.csdnimg.cn/20200223104948460.jpg">
- </center>
+<p align="center">
+ <img src="https://img-blog.csdnimg.cn/20200223104948460.jpg" height="350">
+</p>
 需要注意的是，在环境中ArUco标记可能会发生旋转或者倒着的情况，但是在检测时借助二进制编码能够确定其旋转的情况，以便明确标识每个角。因此ArUco标记不会出现中心对称和轴对称的图案。
 
 标记字典是在具体应用时对标记的识别依据，它是对每个二进制编码及对应含义的存储。
@@ -46,9 +46,9 @@ aruco模块中具有一些预定义的词典，这些词典具有不同的字典
 
 代码清单2-1生成的图像在图2-2给出。
  
- <center>
-<img src="https://img-blog.csdnimg.cn/20200223105957333.jpg">
-</center>
+<p align="center">
+<img src="https://img-blog.csdnimg.cn/20200223105957333.jpg" height="300">
+</p>
 
 aruco模块样例中提供了create_marker.cpp文件用于生成指定的ArRco标记，调用该函数时输入参数需要与代码清单2-2中的格式相同。
 ```cpp
@@ -65,13 +65,17 @@ aruco模块样例中提供了create_marker.cpp文件用于生成指定的ArRco�
 2.	在确定候选标记后，需要通过分析其内部编码来确定它们是否为ArUco标记。这步中需要提取每个标记的标记位。首先应用透视变换获得规范形式的标记，然后使用Otsu算法对规范图像进行阈值处理进行白色位和黑色位分离。根据标记大小和边框大小将图像划分为不同的单元，并对每个单元上的黑色或白色像素进行计数，以确定其是白色位还是黑色位。最后，分析这些像素位以确定标记是否属于特定词典，并在必要时使用纠错技术。
 
 例如需要检测的图片如图2-3所示，检测出的标记如图2-4所示。候选标记在第二步被去除的情况如图2-5所示。
-  <center>
-<img src="https://img-blog.csdnimg.cn/20200223111435710.jpg">
-</center>
-<img src="https://img-blog.csdnimg.cn/20200223111650824.png">
-</center>
-<img src="https://img-blog.csdnimg.cn/2020022311195836.jpg">
-</center>
+<p align="center">
+<img src="https://img-blog.csdnimg.cn/20200223111435710.jpg" height="350">
+</p>
+
+<p align="center">
+<img src="https://img-blog.csdnimg.cn/20200223111650824.png" height="350">
+</p>
+
+<p align="center">
+<img src="https://img-blog.csdnimg.cn/2020022311195836.jpg" height="350">
+</p>
 
 在aruco模块中，detectMarkers()函数实现标志的检测。此函数是该模块中是最重要的函数，其他函数都是基于detectMarkers()函数的返回值进行再处理。代码清单2-3给出了检测标记的示例程序。
 ```cpp
@@ -109,9 +113,9 @@ drawDetectedMarkers()函数具有三个参数，每个参数的含义如下：
 **注意**
 *此功能仅用于可视化，在实际项目中可以省略。*
 
-<center>
-<img src="https://img-blog.csdnimg.cn/202002231129324.jpg">
-</center>
+<p align="center">
+<img src="https://img-blog.csdnimg.cn/202002231129324.jpg" height="350">
+</p>
 
 使用上面两个功能，我们可以创建一个基本的标记检测循环程序，对相机拍摄的场景直接检测标记，该例程在代码清单2-5中给出。
 
@@ -178,9 +182,9 @@ cv::aruco::drawAxis()函数具有六个参数，每个参数的含义如下
 
 此函数假定标记坐标系位于Z轴指向的标记中心。 坐标轴颜色对应为X：红色，Y：绿色，Z：蓝色，具体如图2-7所示。
 
- <center>
- <img src="https://img-blog.csdnimg.cn/20200223114221549.jpg">
-</center>
+<p align="center">
+ <img src="https://img-blog.csdnimg.cn/20200223114221549.jpg" height="350">
+</p>
 
 **提示**
 ***在小白学视觉微信公众号后台回复“坐标轴检测”，即可获得该检测视频完整版*。** 
@@ -221,9 +225,9 @@ cv::aruco::drawAxis()函数具有六个参数，每个参数的含义如下
 30.	}
 
  ```
- <center>
-<img src="https://img-blog.csdnimg.cn/20200223114941709.jpg">
-</center>
+<p align="center">
+<img src="https://img-blog.csdnimg.cn/20200223114941709.jpg" height="350">
+</p>
 
 
 完整的代码程序在aruco模块文件夹内的detect_markers.cpp中。可以通过代码清单2-10中的命令执行该项目。
@@ -306,9 +310,9 @@ bytesList中的每一行表示一个字典标记。但是，这个标记不是�
 -	int  adaptiveThreshWinSizeMin, 
 -	int  adaptiveThreshWinSizeMax, 
 -	int  adaptiveThreshWinSizeStep
- <center>
- <img src="https://img-blog.csdnimg.cn/20200223120037423.jpg">
-</center>
+<p align="center">
+ <img src="https://img-blog.csdnimg.cn/20200223120037423.jpg" height="350">
+</p>
 adaptivewellwinsizemin和adaptivewellwinsizemax参数表示为自适应阈值选择阈值窗口大小(以像素为单位)的区间，adaptiveThreshWinSizeStep表示自适应窗口每次改变的大小。例如，默认值adaptivewellwinsizemin=3、adaptivewellwinsizemax=23以及adaptiveThreshWinSizeStep=10。默认值表示阈值窗口依次为3×3、13×13和23×23。
 此外，标记的尺寸也也对图像阈值处理产生影响，关于阈值尺寸的相关参数为：
 
@@ -336,14 +340,14 @@ adaptivewellwinsizemin和adaptivewellwinsizemax参数表示为自适应阈值选
 在候选标志检测完成后需要对每个候选标志进行数位分析，以确定它们是否是ArUco标记。“位”就是组成标志的最小单元，每个位表示一位二进制，例如一个6×6的标志位数就是36位。
 
 在分析标志中二进制代码之前，需要提取二进制位。为了能够精准的提取二进制信息，首先需要消除了视角形变，之后使用Otsu算法对去除形变的图像进行阈值处理，以分离黑白像素。图2-10就是去除形变和二值化后的结果。
- <center>
- <img src="https://img-blog.csdnimg.cn/20200223120719951.jpg">
-</center>
+<p align="center">
+ <img src="https://img-blog.csdnimg.cn/20200223120719951.jpg" height="350">
+</p>
 
 之后将图像划分到一个网格中，网格的单元格数目与标记中的位数目相同。在每个单元格上，计算黑白像素的数量来决定最终单元格的的颜色，从而确定该位表示的是0还是1。图2-11是划分单元格结果。
- <center>
- <img src="https://img-blog.csdnimg.cn/202002231208441.jpg">
-</center>
+<p align="center">
+ <img src="https://img-blog.csdnimg.cn/202002231208441.jpg" height="350">
+</p>
 
 在这个过程中有几个重要的参数可以选择，具体内容如下：
 
@@ -363,9 +367,9 @@ adaptivewellwinsizemin和adaptivewellwinsizemax参数表示为自适应阈值选
 
 在提取每个单元的位元时，将计算黑白像素的数目。通常，不建议考虑所有的单元格像素。相反，最好忽略单元格边缘的一些像素。这样做的原因是，在消除了透视失真之后，每个像素的颜色通常并不是完全分离的，白色单元可以入侵黑色单元的一些像素(反之亦然)。因此，为了避免计算错误的像素，最好忽略一些像素，如图2-12所示只考虑绿色方块内的像素。在右边的图像中可以看到，生成的像素包含来自邻居单元的更低的噪声。参数指示了红色和绿色方块之间的差异。
 
- <center>
- <img src="https://img-blog.csdnimg.cn/20200223121121631.jpg">
-</center>
+<p align="center">
+ <img src="https://img-blog.csdnimg.cn/20200223121121631.jpg" height="300">
+</p>
 
 此参数表示绿色方框外忽略部分相对于单元格的总大小。例如，如果单元格大小为40像素，并且该参数的值为0.1，则单元格中忽略40*0.1=4像素的空白。这意味着在每个单元上要分析的像素总数实际上是32x32，而不是40x40。该参数默认值为0.13。
 
