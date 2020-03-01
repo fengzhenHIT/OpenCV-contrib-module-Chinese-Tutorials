@@ -1,1 +1,74 @@
-安装介绍
+## 4.2.1	目标
+在本节教程中，我们将介绍如何重现我们的眼睛在特定光线条件下感知到的视觉错觉：阿德尔森棋盘。
+
+## 4.2.2	阿德尔森棋盘
+当看到如图4-6所示的棋盘图，人类的眼睛感知到“B”方块比“A”方块更亮，尽管它们拥有完全相同的RGB颜色。当然，在现实世界中，棋盘上有一个“B”正方形，它比“A”的颜色浅，但在这幅图中，绿色圆柱投射在“B”正方形上的阴影最终使“A”和“B”正方形的亮度相同。这个棋盘就被称为阿德森棋盘。
+
+<p align="center">
+<img src="https://img-blog.csdnimg.cn/2020022412270887.png" height="300">
+</p>
+ 
+我们的视觉系统确实对阴影进行了“补偿”，使我们感知到“B”方更亮，好像这阴影不会在那里。这是由于中央视网膜凹区域的局部适应过程造成的。我们可以把两个正方形的一部分切下来，然后在没有任何背景的情况下看着它们。我们还可以使用工具测量两个正方形的RGB值。在这张图中，我们裁剪了一小块A和B的方块，并把它们放在一起。很明显它们有相同的亮度，结果图在图4-7给出。
+
+<p align="center">
+<img src="https://img-blog.csdnimg.cn/20200224122822926.png" height="300">
+</p>
+
+实际上的原理是，当我们看一个区域时，我们的眼睛局部适应亮度，过滤噪音，加强轮廓等，考虑到周围的区域，这使得产生错觉。因此，被较亮细胞包围的A细胞可以被认为较暗。相反，B细胞的邻域较暗，B细胞则被认为较亮。
+
+## 4.2.3	重现错觉
+bioinspired模块模拟了视网膜的过程，它再现了我们眼睛的局部适应能力。这意味着我们可以将细小通道的输出真正包含的亮度值与我们用眼睛感知的亮度值相似。具体来说，在这种情况下，我们期望“B”方块的RGB值实际上比“A”值更小。
+
+为了正确地模仿我们的眼睛，我们需要opencv对正确的图像部分进行局部适应。这意味着我们必须确保opencv的“局部”概念与我们的图像尺寸匹配，否则局部适应将不能像预期的那样工作。由于这个原因，我们可能不得不根据图像分辨率调整hcellsSpatialConstant参数(该参数在技术上指定较低的空间切割频率，或较慢的亮度变化灵敏度)。针对本教程中的图像，可以使用视网膜模型默认参数。
+
+bioinspired模块自带了用于展示的example_bioinspired_retinaDemo示例将图像加载给视网膜模型。运行该示例的命令在代码清单4-10中给出。
+
+```cpp
+代码清单4-10
+example_bioinspired_retinaDemo -image checkershadow_illusion4med.jpg
+```
+
+这是一个静态图像，但我们的视网膜刚刚开始移动到一个新的环境(眼睛睁开)，必须适应这个环境。在这种瞬态状态下，亮度信息起作用，我们或多或少地看到绝对亮度值。为了重现幻觉，绝对亮度是你不需要看的。
+
+一旦达到稳定状态，我们就会收到更多的背景亮度信息。眼睛以中心环绕的方式工作，并考虑周围的亮度来评估感兴趣区域的亮度水平。那就是我们的幻觉出现的时候!
+
+当处理一个单独的帧时，只需要稳态响应，我们需要做的是重复地给视网膜输入相同的帧(这是示例代码所做的)，就像处理一个静止的视频一样。或者，我们可以将视网膜时间参数设置为0以立即获得稳定状态(xml文件的photoreceptorsTemporalConstant和hcellsTemporalConstant参数)。然而，在这种情况下，我们应该意识到，我们正在做的实验再现真实视网膜的行为时，故意降低了准确性!
+
+代码清单4-11中给出了处理图像的一小段python代码，它将迭代20次。这是经过实验发现的较好的次数
+
+```python
+代码清单4-11：python代码
+import cv2 as cv
+inputImage = cv.imread('checkershadow_illusion4med.jpg', 1)
+retina = cv.bioinspired.createRetina((inputImage.shape[1], inputImage.shape[0]))
+# the retina object is created with default parameters. If you want to read
+# the parameters from an external XML file, uncomment the next line
+#retina.setup('MyRetinaParameters.xml')
+# feed the retina with several frames, in order to reach 'steady' state
+for i in range(20):
+    retina.run(inputImage)
+# get our processed image :)
+retinaOut_parvo = retina.getParvo()
+# show both the original image and the processed one
+cv.imshow('image', inputImage)
+cv.imshow('retina parvo out', retinaOut_parvo)
+# wait for a key to be pressed and exit
+cv.waitKey(0)
+cv.destroyAllWindows()
+# write the output image on a file
+cv.imwrite('checkershadow_parvo.png', retinaOut_parvo)
+```
+最终我们将得到如图4-8所示的结果。
+
+<p align="center">
+<img src="https://img-blog.csdnimg.cn/2020022412331978.png" height="300">
+</p>
+
+## 4.2.4	结果分析
+将图4-8中“A”块和“B”块裁剪出来放在一起，结果如图4-9所示。我们可以看到经过处理，此时“A”块的像素值要大于“B”块，这样的结果更加符合我们看到的结果。
+
+<p align="center">
+<img src="https://img-blog.csdnimg.cn/20200224123523891.png" height="300">
+</p>
+
+ 
