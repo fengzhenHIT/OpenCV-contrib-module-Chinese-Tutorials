@@ -137,6 +137,3 @@ Contrib Modules是OpenCV的扩展模块，包含了很多用于实现特定算�
 &nbsp;
 
 完整版电子书pdf已经整理完成，喜欢阅读电子书，和迫切需要完整版朋友可以在**小白学视觉**微信公众号后台回复**扩展模块中文教程**获取
-
-&nbsp;
-[也可以通过CSDN下载抢鲜版](https://download.csdn.net/download/qq_42722197/12178880)
